@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 # Do not inherit from this class unless you know what you're doing
 # See ProtectedController and OpenReadController
+
+# authenticates
+# sets current user
 class ApplicationController < ActionController::API
   # Force to wants JSON for API
   before_action :api_request_settings

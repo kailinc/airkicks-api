@@ -2,6 +2,10 @@
 class ExamplesController < OpenReadController
   before_action :set_example, only: [:update, :destroy]
 
+# if inherit from OpenReadController can only read
+
+# protected controller requires authentication
+
   # GET /examples
   # GET /examples.json
   def index
@@ -20,7 +24,7 @@ class ExamplesController < OpenReadController
   # POST /examples.json
   def create
     @example = current_user.examples.build(example_params)
-
+    # way for ruby to know if you create an example it belongs to that user
     if @example.save
       render json: @example, status: :created
     else
@@ -48,6 +52,7 @@ class ExamplesController < OpenReadController
 
   def set_example
     @example = current_user.examples.find(params[:id])
+    # make sure that only that user can edit example
   end
 
   def example_params

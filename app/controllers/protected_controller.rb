@@ -3,3 +3,5 @@
 class ProtectedController < ApplicationController
   before_action :authenticate
 end
+
+# authenticate all actions
