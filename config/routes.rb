@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
 
   # COLLECTION routes
-  resources :collections, only: [:index, :show, :create, :edit, :delete]
+  resources :collections, only: [:index, :show, :create, :edit, :delete, :update]
 
   # SHOE ROUTES
   resources :shoes, only: [:index, :show, :destroy, :create, :update]
