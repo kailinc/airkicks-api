@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: [:signup, :signin]
+  skip_before_action :authenticate, only: [:signup, :signin, :index, :show]
 
   # POST '/sign-up'
   def signup
@@ -53,15 +53,11 @@ class UsersController < ProtectedController
     render json: user
   end
 
-  def update
-    head :bad_request
-  end
-
   private
 
   def user_creds
     params.require(:credentials)
-          .permit(:email, :password, :password_confirmation)
+          .permit( :email, :password, :password_confirmation)
   end
 
   def pw_creds
