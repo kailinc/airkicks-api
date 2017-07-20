@@ -1,5 +1,5 @@
-class CollectionsController < ApplicationController
-  before_action :set_collection, only: [:show, :update, :destroy]
+class CollectionsController < OpenReadController
+  before_action :set_collection, only: [:update, :destroy]
 
   # GET /collections
   def index
@@ -10,12 +10,13 @@ class CollectionsController < ApplicationController
 
   # GET /collections/1
   def show
+    @collection = Collection.find(params[:id])
     render json: @collection
   end
 
   # POST /collections
   def create
-    @collection = Collection.new(collection_params)
+    @collection = current_user.collections.build(collection_params)
 
     if @collection.save
       render json: @collection, status: :created, location: @collection
@@ -41,11 +42,11 @@ class CollectionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
-      @collection = Collection.find(params[:id])
+      @collection = current_user.collections.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def collection_params
-      params.require(:collection).permit(:name, :description, :user_id)
+      params.require(:collection).permit(:name, :description)
     end
 end

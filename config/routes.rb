@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
 
-  resources :collections
+  # COLLECTION routes
+  resources :collections, only: [:index, :show, :create, :edit, :delete]
+
   # SHOE ROUTES
   resources :shoes, only: [:index, :show, :destroy, :create, :update]
   # USER ROUTES
