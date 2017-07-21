@@ -1,5 +1,6 @@
-TOKEN='BAhJIiUyODI5OWEyZDcxNmIxMDA1OTQzNjQ2NTA5Zjg2MGU3ZQY6BkVG--1bfb1e8cdfb2417e8f8704cd3ad86621d45915a2'
-DESCRIPTION='Kicking it'
+TOKEN='BAhJIiU1YjZkNTZmZWM1YjY4YTk4MTI2ZGNlZjY2ZGJkNDUyMwY6BkVG--65bf48e3cd68c6d5f4cd0844af39c84afeb32590'
+DESCRIPTION='BABBBY TOOL'
+NAME='BABBY TOOL'
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/collections"
@@ -10,6 +11,7 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Token token=$TOKEN" \
   --data '{
     "collection": {
+      "name": "'"${NAME}"'",
       "description": "'"${DESCRIPTION}"'"
     }
   }'

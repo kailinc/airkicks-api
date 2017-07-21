@@ -1,5 +1,5 @@
 class ConnectShoeCollectionsController < ApplicationController
-  before_action :set_connect_shoe_collection, only: [:show, :update, :destroy]
+  before_action :set_connect_shoe_collection, only: [:show, :destroy]
 
   # GET /connect_shoe_collections
   def index
@@ -24,14 +24,6 @@ class ConnectShoeCollectionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /connect_shoe_collections/1
-  def update
-    if @connect_shoe_collection.update(connect_shoe_collection_params)
-      render json: @connect_shoe_collection
-    else
-      render json: @connect_shoe_collection.errors, status: :unprocessable_entity
-    end
-  end
 
   # DELETE /connect_shoe_collections/1
   def destroy
