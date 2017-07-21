@@ -1,7 +1,8 @@
 #!/bin/bash
-ID='1'
-TOKEN='BAhJIiVjNzI1NGVmZmEzMzk5ZDg3OTczOWQ3OGFmY2RmODg3OQY6BkVG--be3a6c34859130ffb4260c3a3b68b3991e27833b'
-CAPTION='hello'
+ID='8'
+TOKEN='BAhJIiU3M2VhMGFhMmIwYWQxNjVjZmZmOWNhZTAwYWUxMGI0YQY6BkVG--43a97f6f6a14311a3dbf0636ea7095a99b43a915'
+NAME='Jordan'
+CAPTION='it works'
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/shoes"
@@ -12,6 +13,7 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Content-Type: application/json" \
   --data '{
     "shoe": {
+      "name": "'"${NAME}"'",
       "caption": "'"${CAPTION}"'"
     }
   }'
