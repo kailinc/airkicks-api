@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
 
+  resources :connect_shoe_collections
   # COLLECTION routes
   resources :collections, only: [:index, :show, :create, :destroy, :update]
 
