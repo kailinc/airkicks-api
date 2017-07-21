@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   # connect shoe collection routes
   resources :connect_shoe_collections, only: [:index, :show, :create, :destroy]
+  get '/user-collections/:id' => 'users#usercollections'
+
   # COLLECTION routes
   resources :collections, only: [:index, :show, :create, :destroy, :update]
 

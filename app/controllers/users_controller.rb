@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: [:signup, :signin, :index, :show, :usershoes]
+  skip_before_action :authenticate, only: [:signup, :signin, :index, :show, :usershoes, :usercollections]
 
   # POST '/sign-up'
   def signup
@@ -48,6 +48,11 @@ class UsersController < ProtectedController
   def usershoes
     user = User.find(params[:id])
     render json: user, serializer: UserShoesSerializer, root: 'user'
+  end
+
+  def usercollections
+    user = User.find(params[:id])
+    render json: user, serializer: UserCollectionsSerializer, root: 'user'
   end
 
   def index
