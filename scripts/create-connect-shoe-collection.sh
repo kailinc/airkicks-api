@@ -1,5 +1,5 @@
-SHOEID='3'
-COLLECTIONID='2'
+SHOEID='8'
+COLLECTIONID='7'
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/connect_shoe_collections"

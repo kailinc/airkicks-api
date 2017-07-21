@@ -1,9 +1,9 @@
 #!/bin/bash
-ID='4'
+
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/connect_shoe_collections"
-curl "${API}${URL_PATH}/${ID}" \
+curl "${API}${URL_PATH}" \
   --include \
-  --request DELETE \
+  --request GET \
 
 echo
