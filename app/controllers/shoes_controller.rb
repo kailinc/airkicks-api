@@ -11,7 +11,7 @@ class ShoesController < OpenReadController
   # GET /shoes/1
   def show
     @shoe = Shoe.find(params[:id])
-    render json: @shoe
+    render json: @shoe, serializer: ShoeIndSerializer
   end
 
   # POST /shoes
