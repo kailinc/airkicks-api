@@ -1,6 +1,6 @@
-TOKEN='BAhJIiUyYjhkMGFmN2NiMjA2M2Y0Mzg2Njc2NTMwZTcxM2ZhZQY6BkVG--2feeb441146fe77e88eaa968cc7aef66bf496e7a'
-DESCRIPTION='tests'
-NAME='tests'
+TOKEN='BAhJIiU3ZjI5MDM1NDBjNDNiYmU5NmVjM2IyNGYwYTIwYzM5OQY6BkVG--45a69afccad79edc1dd31dcb1db0f2dfd6c48b6a'
+DESCRIPTION='Best shoess on eurrph'
+NAME='King Kicks'
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/collections"

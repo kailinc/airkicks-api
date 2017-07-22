@@ -1,6 +1,6 @@
 #!/bin/bash
-EMAIL='b'
-PASSWORD='b'
+EMAIL='c'
+PASSWORD='c'
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/sign-up"
 curl "${API}${URL_PATH}" \
