@@ -6,7 +6,7 @@ URL_PATH="/collections"
 curl "${API}${URL_PATH}/${ID}" \
   --include \
   --request DELETE \
-  --header "Co16tent-Type: application/json" \
+  --header "Content-Type: application/json" \
   --header "Authorization: Token token=$TOKEN"
 
 echo
