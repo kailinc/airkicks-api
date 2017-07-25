@@ -1,93 +1,37 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# API for Air Kicks
 
-# rails-api-template
+Currently, the API allows for creating a social media platform for users to share their shoes and collections to the Internet.
 
-A template for starting projects with `rails-api`. Includes authentication.
+# API End Points
 
-At the beginning of each cohort, update the versions in [`Gemfile`](Gemfile).
+Verb   | URI Pattern                     | Controller#Action
+------ | ------------------------------- | ---------------------------------
+POST   | `/sign-up`                      | `users#signup`
+POST   | `/sign-in`                      | `users#signin`
+PATCH  | `/change-password/:id`          | `users#changepw`
+DELETE | `/sign-out/:id`                 | `users#signout`
+GET    | `/user-shoes/:id`               | `users#usershoes`
+GET    | `/user-collections/:id`         | `users#usercollections`
+GET    | `/shoes`                        | `shoes#index`
+GET    | `/shoes/:id`                    | `shoes#show`
+POST   | `/shoes`                        | `shoes#create`
+PATCH  | `/shoes/:id`                    | `shoes#update`
+DELETE | `/shoes/:id`                    | `shoes#destroy`
+GET    | `/collections`                  | `collections#index`
+GET    | `/collections/:id`              | `collections#show`
+POST   | `/collections`                  | `collections#create`
+PATCH  | `/collections/:id`              | `collections#update`
+DELETE | `/collections/:id`              | `collections#destroy`
+GET    | `/connect_shoe_collections`     | `connect_shoe_collections#index`
+GET    | `/connect_shoe_collections/:id` | `connect_shoe_collections#show`
+POST   | `/connect_shoe_collections`     | `connect_shoe_collections#create`
+PATCH  | `/connect_shoe_collections/:id` | `connect_shoe_collections#update`
 
-## Dependencies
+All data is returned from API actions formatted as JSON. Connect Shoe Collection Controller is not ready for implementation. It needs to be formatted to inherit from OpenReadController to authenticate user.
 
-Install with `bundle install`.
+# User Actions
 
--   [`rails-api`](https://github.com/rails-api/rails-api)
--   [`rails`](https://github.com/rails/rails)
--   [`active_model_serializers`](https://github.com/rails-api/active_model_serializers)
--   [`ruby`](https://www.ruby-lang.org/en/)
--   [`postgres`](http://www.postgresql.org)
-
-Until Rails 5 is released, this template should follow the most recent released
-version of Rails 4, as well as track `master` branches for `rails-api` and
-`active_model_serializers`.
-
-## Installation
-
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory.
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Move into the new project and `git init`.
-1.  Install dependencies with `bundle install`.
-1.  Rename your app module in `config/application.rb` (change
-    `RailsApiTemplate`).
-1.  Rename your project database in `config/database.yml` (change
-    `'rails-api-template'`).
-1.  Create a `.env` for sensitive settings (`touch .env`).
-1.  Generate new `development` and `test` secrets (`bundle exec rake secret`).
-1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
-    respectively.
-1.  In order to make requests to your deployed API, you will need to set
-    `SECRET_KEY_BASE` in the environment of the production API (using `heroku
-    config:set` or the Heroku dashboard).
-1.  In order to make requests from your deployed client application, you will
-    need to set `CLIENT_ORIGIN` in the environment of the production API (e.g.
-    `heroku config:set CLIENT_ORIGIN https://<github-username>.github.io`).
-1.  Setup your database with `bin/rake db:nuke_pave` or `bundle exec rake
-    db:nuke_pave`.
-1.  Run the API server with `bin/rails server` or `bundle exec rails server`.
-
-## Structure
-
-This template follows the standard project structure in Rails 4.
-
-`curl` command scripts are stored in [`scripts`](scripts) with names that
-correspond to API actions.
-
-User authentication is built-in.
-
-## Tasks
-
-Developers should run these often!
-
--   `bin/rake routes` lists the endpoints available in your API.
--   `bin/rake test` runs automated tests.
--   `bin/rails console` opens a REPL that pre-loads the API.
--   `bin/rails db` opens your database client and loads the correct database.
--   `bin/rails server` starts the API.
--   `scripts/*.sh` run various `curl` commands to test the API. See below.
-
-<!-- TODO -   `rake nag` checks your code style. -->
-<!-- TODO -   `rake lint` checks your code for syntax errors. -->
-
-## API
-
-Use this as the basis for your own API documentation. Add a new third-level
-heading for your custom entities, and follow the pattern provided for the
-built-in user authentication documentation.
-
-Scripts are included in [`scripts`](scripts) to test built-in actions. Add your
-own scripts to test your custom API. As an alternative, you can write automated
-tests in RSpec to test your API.
-
-### Authentication
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/sign-up`             | `users#signup`    |
-| POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password/:id` | `users#changepw`  |
-| DELETE | `/sign-out/:id`        | `users#signout`   |
-
-#### POST /sign-up
+## POST /sign-up
 
 Request:
 
@@ -111,7 +55,7 @@ EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-up.sh
 
 Response:
 
-```md
+```markdown
 HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8
 
@@ -123,7 +67,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-#### POST /sign-in
+## POST /sign-in
 
 Request:
 
@@ -146,7 +90,7 @@ EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-in.sh
 
 Response:
 
-```md
+```markdown
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -159,7 +103,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-#### PATCH /change-password/:id
+## PATCH /change-password/:id
 
 Request:
 
@@ -181,11 +125,11 @@ ID=1 OLDPW=hannah NEWPW=elle TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxY
 
 Response:
 
-```md
+```markdown
 HTTP/1.1 204 No Content
 ```
 
-#### DELETE /sign-out/:id
+## DELETE /sign-out/:id
 
 Request:
 
@@ -202,18 +146,18 @@ ID=1 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974e
 
 Response:
 
-```md
+```markdown
 HTTP/1.1 204 No Content
 ```
 
-### Users
+## Users
 
-| Verb | URI Pattern | Controller#Action |
-|------|-------------|-------------------|
-| GET  | `/users`    | `users#index`     |
-| GET  | `/users/1`  | `users#show`      |
+Verb | URI Pattern | Controller#Action
+---- | ----------- | -----------------
+GET  | `/users`    | `users#index`
+GET  | `/users/1`  | `users#show`
 
-#### GET /users
+### GET /users
 
 Request:
 
@@ -230,7 +174,7 @@ TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e
 
 Response:
 
-```md
+```markdown
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -248,7 +192,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-#### GET /users/:id
+### GET /users/:id
 
 Request:
 
@@ -263,7 +207,7 @@ ID=2 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974e
 
 Response:
 
-```md
+```markdown
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -275,26 +219,583 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### Reset Database without dropping
+### GET /users-shoes/:id
 
-This is not a task developers should run often, but it is sometimes necessary.
+This returns the shoes that the user owns. This does not require authentication.
 
-**locally**
-
-```sh
-bin/rake db:migrate VERSION=0
-bin/rake db:migrate db:seed db:examples
-```
-
-**heroku**
+Request:
 
 ```sh
-heroku run rake db:migrate VERSION=0
-heroku run rake db:migrate db:seed db:examples
+curl --include --request GET http://localhost:4741/users-shoes/$ID \
 ```
 
-## [License](LICENSE)
+```sh
+ID=19 scripts/get-user-shoes.sh
+```
 
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+Response:
+
+```markdown
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "user": {
+    "shoes": [
+      {
+        "id": 32,
+        "name": "Jordan 30",
+        "brand": "Jordan",
+        "caption": "my favorite shoe",
+        "user_id": 19,
+        "created_at": "2017-07-24T14:21:18.422Z",
+        "updated_at": "2017-07-24T14:21:18.422Z"
+      },
+      {
+        "id": 33,
+        "name": "Jordan 30",
+        "brand": null,
+        "caption": "my favorite shoe",
+        "user_id": 19,
+        "created_at": "2017-07-24T14:21:30.689Z",
+        "updated_at": "2017-07-24T14:21:30.689Z"
+      },
+      {
+        "id": 31,
+        "name": "Jordan 30",
+        "brand": "Jordan",
+        "caption": "my favorite shoe",
+        "user_id": 19,
+        "created_at": "2017-07-24T13:34:44.095Z",
+        "updated_at": "2017-07-24T13:34:44.095Z"
+      }
+      ]
+    }
+}
+```
+
+### GET /users-collections/:id
+
+This returns the collection that the user owns. This does not require authentication.
+
+Request:
+
+```sh
+curl --include --request GET http://localhost:4741/users-collections/$ID \
+```
+
+```sh
+ID=19 scripts/get-user-collections.sh
+```
+
+Response:
+
+```markdown
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "user": {
+    "collections": [
+      {
+        "id": 10,
+        "name": "Best Shoes",
+        "description": "I love This",
+        "user_id": 19,
+        "created_at": "2017-07-24T13:29:57.853Z",
+        "updated_at": "2017-07-24T13:29:57.853Z"
+      },
+      {
+        "id": 11,
+        "name": "What Watermelon",
+        "description": "I love This",
+        "user_id": 19,
+        "created_at": "2017-07-24T13:32:33.571Z",
+        "updated_at": "2017-07-24T13:32:33.571Z"
+      },
+      {
+        "id": 15,
+        "name": "What Watermelon  d d",
+        "description": "I love This",
+        "user_id": 19,
+        "created_at": "2017-07-24T14:19:46.629Z",
+        "updated_at": "2017-07-24T14:19:46.629Z"
+      },
+      {
+        "id": 16,
+        "name": "What Watermelon  d d",
+        "description": null,
+        "user_id": 19,
+        "created_at": "2017-07-24T14:20:09.956Z",
+        "updated_at": "2017-07-24T14:20:09.956Z"
+      }
+    ]
+  }
+}
+```
+
+# Shoe Actions
+
+### GET /shoes
+
+Request:
+
+```sh
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/shoes"
+curl "${API}${URL_PATH}" \
+  --include \
+  --request GET \
+```
+
+Response:
+
+```markdown
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "shoes": [
+    {
+      "id": 32,
+      "name": "Jordan 30",
+      "brand": "Jordan",
+      "caption": "my favorite shoe",
+      "user":
+        {
+          "id": 19,
+          "email": "a",
+          "token": "62f9a3f0daa1a77a316bc1b19e860776",
+          "password_digest": "$2a$10$huAG0.NWORbUjWlbfaQ7outo3a4PYObs7wclVj647uyzCkObrjjqy",
+          "created_at": "2017-07-24T13:29:11.369Z",
+          "updated_at": "2017-07-25T20:10:10.459Z"
+        }
+    },
+    {
+      "id": 33,
+      "name": "Jordan 30",
+      "brand": null,
+      "caption": "my favorite shoe",
+      "user":
+      {
+        "id": 19,
+        "email": "a",
+        "token": "62f9a3f0daa1a77a316bc1b19e860776",
+        "password_digest": "$2a$10$huAG0.NWORbUjWlbfaQ7outo3a4PYObs7wclVj647uyzCkObrjjqy",
+        "created_at": "2017-07-24T13:29:11.369Z",
+        "updated_at": "2017-07-25T20:10:10.459Z"
+      }
+    }
+}
+```
+
+
+### GET /shoes/:id
+
+Request:
+
+```sh
+ID='32'
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/shoes/${ID}"
+curl "${API}${URL_PATH}" \
+  --include \
+  --request GET \
+```
+
+Response:
+
+```markdown
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "shoe": {
+    "id": 32,
+    "name": "Jordan 30",
+    "brand": "Jordan",
+    "caption": "my favorite shoe",
+    "user":
+      {
+        "id": 19,
+        "email": "a",
+        "token": "62f9a3f0daa1a77a316bc1b19e860776",
+        "password_digest": "$2a$10$huAG0.NWORbUjWlbfaQ7outo3a4PYObs7wclVj647uyzCkObrjjqy",
+        "created_at": "2017-07-24T13:29:11.369Z",
+        "updated_at": "2017-07-25T20:10:10.459Z"
+      }
+  }
+}
+```
+
+
+## POST /shoes
+
+Request:
+
+```sh
+TOKEN='BAhJIiUyYjIwNTc2Mjg4ZTQzOWE1MTI5MGJmNWI3OGZjMDcwNAY6BkVG--d414ad3aafa830fbd666263462e5e78a722f9b22'
+NAME='Jordan 30'
+BRAND='Jordan'
+CAPTION='my favorite shoe'
+
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/shoes"
+curl "${API}${URL_PATH}" \
+  --include \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
+  --data '{
+    "shoe": {
+      "name": "'"${NAME}"'",
+      "brand": "'"${BRAND}"'",
+      "caption": "'"${CAPTION}"'"
+    }
+  }'
+
+```
+
+
+Response:
+
+```markdown
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+
+{
+  "shoe":
+    {
+      "id":57,
+      "name":"Baller",
+      "brand":"Baller",
+      "caption":"Baller",
+      "user":
+        {
+          "id":19,
+          "email":"a",
+          "token":"62f9a3f0daa1a77a316bc1b19e860776",
+          "password_digest":"$2a$10$huAG0.NWORbUjWlbfaQ7outo3a4PYObs7wclVj647uyzCkObrjjqy",
+          "created_at":"2017-07-24T13:29:11.369Z",
+          "updated_at":"2017-07-25T20:10:10.459Z"}
+        }
+}
+```
+
+## PATCH /shoes/:id
+
+Request:
+
+```sh
+ID='14'
+TOKEN='BAhJIiVmZDMxZmM5OGNkMWRjZGE5YTNiZDc0MTczMGI4MGVhZgY6BkVG--75053ac3cd8be8774cf47bcdf3fb5480391cdd9b'
+CAPTION='love it'
+
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/shoes"
+curl "${API}${URL_PATH}/${ID}" \
+  --include \
+  --request PATCH \
+  --header "Authorization: Token token=${TOKEN}" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "shoe": {
+      "caption": "'"${CAPTION}"'"
+    }
+  }'
+```
+
+
+Response:
+
+```markdown
+HTTP/1.1 204 No Content
+```
+
+## DELETE /shoes/:id
+
+Request:
+
+```sh
+TOKEN='BAhJIiU3M2VhMGFhMmIwYWQxNjVjZmZmOWNhZTAwYWUxMGI0YQY6BkVG--43a97f6f6a14311a3dbf0636ea7095a99b43a915'
+ID=7
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/shoes"
+curl "${API}${URL_PATH}/${ID}" \
+  --include \
+  --request DELETE \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN"
+
+```
+
+Response:
+
+```markdown
+HTTP/1.1 204 No Content
+```
+
+# Collection
+
+### GET /collections
+
+Request:
+
+```sh
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/collections"
+curl "${API}${URL_PATH}" \
+  --include \
+  --request GET \
+
+```
+
+Response:
+
+```markdown
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "collections": [
+  {
+    "id": 31,
+    "name": "ewqrqwerwq",
+    "description": "kk",
+    "shoes": []
+  },
+  {
+    "id": 8,
+    "name": "My Jordans",
+    "description": "best shoes of jordan collection",
+    "shoes": []
+  },
+  {
+    "id": 32,
+    "name": "asfasfads",
+    "description": "asfdsa",
+    "shoes": []
+  }
+}
+```
+
+### GET /collections/:id
+
+Request:
+
+```sh
+ID='31'
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/collections/${ID}"
+curl "${API}${URL_PATH}" \
+  --include \
+  --request GET \
+```
+
+Response:
+
+```markdown
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "collection":
+  {
+    "id": 31,
+    "name": "ewqrqwerwq",
+    "description": "kk",
+    "shoes": []
+  }
+}
+```
+
+## POST /collections
+
+Request:
+
+```sh
+TOKEN='BAhJIiU1MjM4ZjM2YWMzOWIxNTRhZTU3NjgwZjdhMGUxMjg2NQY6BkVG--377069f0d82c2c843cea8fc7711ffffd2ae0e1df'
+DESCRIPTION='I love This'
+NAME='Jordan King'
+
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/collections"
+curl "${API}${URL_PATH}" \
+  --include \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
+  --data '{
+    "collection": {
+      "name": "'"${NAME}"'"
+    }
+  }'
+
+```
+
+
+Response:
+
+```markdown
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+
+{
+  "collection":
+    {
+      "id":33,
+      "name":"Jordan King",
+      "description":null,
+      "shoes":[]
+    }
+}
+
+```
+
+## PATCH /collections/:id
+
+Request:
+
+```sh
+ID='31'
+TOKEN='BAhJIiUwOTNiZTZkODkyMWI0ZjFiMjUxMmFiNDg1ZWI1YjNmNwY6BkVG--85a809824ca4e12926f918f2c9c374edf7160b86'
+DESCRIPTION='This is awesome'
+
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/collections"
+curl "${API}${URL_PATH}/${ID}" \
+  --include \
+  --request PATCH \
+  --header "Authorization: Token token=${TOKEN}" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "collection": {
+      "description": "'"${DESCRIPTION}"'"
+    }
+  }'
+```
+
+
+Response:
+
+```markdown
+HTTP/1.1 204 No Content
+```
+
+
+
+## DELETE /collections/:id
+
+Request:
+
+```sh
+TOKEN='BAhJIiVmZDMxZmM5OGNkMWRjZGE5YTNiZDc0MTczMGI4MGVhZgY6BkVG--75053ac3cd8be8774cf47bcdf3fb5480391cdd9b'
+ID=14
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/collections"
+curl "${API}${URL_PATH}/${ID}" \
+  --include \
+  --request DELETE \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN"
+
+```
+
+Response:
+
+```markdown
+HTTP/1.1 204 No Content
+```
+
+# Connect Shoe Collections
+This part is unfinished and will be modified in the future
+
+
+## POST /connect_shoe_collections
+
+Request:
+
+```sh
+SHOEID='32'
+COLLECTIONID='31'
+
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/connect_shoe_collections"
+curl "${API}${URL_PATH}" \
+  --include \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{
+    "connect_shoe_collection": {
+      "shoe_id": "'"${SHOEID}"'",
+      "collection_id": "'"${COLLECTIONID}"'"
+    }
+  }'
+```
+
+
+Response:
+
+```markdown
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+
+{
+  "connect_shoe_collection":
+    {
+      "id":1,
+      "shoe":
+        {
+          "id":32,
+          "name":"Jordan 30",
+          "brand":"Jordan",
+          "caption":"my favorite shoe",
+          "user": {
+            "id":19,
+            "email":"a",
+            "token":"5238f36ac39b154ae57680f7a0e12865",
+            "password_digest":"$2a$10$huAG0.NWORbUjWlbfaQ7outo3a4PYObs7wclVj647uyzCkObrjjqy",
+            "created_at":"2017-07-24T13:29:11.369Z",
+            "updated_at":"2017-07-25T20:28:27.534Z"
+            }
+        },
+      "collection":
+        {
+        "id":31,
+        "name":"ewqrqwerwq",
+        "description":"kk",
+        "shoes":[
+          {
+            "id":32,
+            "name":"Jordan 30",
+            "brand":"Jordan",
+            "caption":"my favorite shoe",
+            "user_id":19,
+            "created_at":"2017-07-24T14:21:18.422Z",
+            "updated_at":"2017-07-24T14:21:18.422Z"
+          }
+          ]
+        }
+    }
+}
+```
+
+
+## DELETE /connect_shoe_collections/:id
+
+Request:
+
+```sh
+ID='8'
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/connect_shoe_collections"
+curl "${API}${URL_PATH}/${ID}" \
+  --include \
+  --request DELETE \
+```
+
+Response:
+
+```markdown
+HTTP/1.1 204 No Content
+```

@@ -1,7 +1,7 @@
 #!/bin/bash
-ID='12'
+ID='31'
 TOKEN='BAhJIiUwOTNiZTZkODkyMWI0ZjFiMjUxMmFiNDg1ZWI1YjNmNwY6BkVG--85a809824ca4e12926f918f2c9c374edf7160b86'
-DESCRIPTION='whaaa ker'
+DESCRIPTION='This is awesome'
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/collections"

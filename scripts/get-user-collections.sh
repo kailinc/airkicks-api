@@ -1,4 +1,4 @@
-ID='4'
+ID='19'
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/user-collections/${ID}"
 curl "${API}${URL_PATH}" \

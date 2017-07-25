@@ -1,7 +1,7 @@
-TOKEN='BAhJIiUyYjIwNTc2Mjg4ZTQzOWE1MTI5MGJmNWI3OGZjMDcwNAY6BkVG--d414ad3aafa830fbd666263462e5e78a722f9b22'
-NAME='Jordan 30'
-BRAND='Jordan'
-CAPTION='my favorite shoe'
+TOKEN='BAhJIiU2MmY5YTNmMGRhYTFhNzdhMzE2YmMxYjE5ZTg2MDc3NgY6BkVG--5d52254242926eb25f7dc0371868eb7305f098f1'
+NAME='Baller'
+BRAND='Baller'
+CAPTION='Baller'
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/shoes"
@@ -13,7 +13,7 @@ curl "${API}${URL_PATH}" \
   --data '{
     "shoe": {
       "name": "'"${NAME}"'",
-      "brand": "'"${BRAND}"'"
+      "brand": "'"${BRAND}"'",
       "caption": "'"${CAPTION}"'"
     }
   }'

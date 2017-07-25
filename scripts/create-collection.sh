@@ -1,6 +1,6 @@
-TOKEN='BAhJIiUyYjIwNTc2Mjg4ZTQzOWE1MTI5MGJmNWI3OGZjMDcwNAY6BkVG--d414ad3aafa830fbd666263462e5e78a722f9b22'
+TOKEN='BAhJIiU1MjM4ZjM2YWMzOWIxNTRhZTU3NjgwZjdhMGUxMjg2NQY6BkVG--377069f0d82c2c843cea8fc7711ffffd2ae0e1df'
 DESCRIPTION='I love This'
-NAME='What Watermelon  d d'
+NAME='Jordan King'
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/collections"

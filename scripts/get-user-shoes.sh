@@ -1,5 +1,5 @@
 #!/bin/bash
-ID=2
+ID=19
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/user-shoes"
 curl "${API}${URL_PATH}/${ID}" \
