@@ -22,10 +22,6 @@ GET    | `/collections/:id`              | `collections#show`
 POST   | `/collections`                  | `collections#create`
 PATCH  | `/collections/:id`              | `collections#update`
 DELETE | `/collections/:id`              | `collections#destroy`
-GET    | `/connect_shoe_collections`     | `connect_shoe_collections#index`
-GET    | `/connect_shoe_collections/:id` | `connect_shoe_collections#show`
-POST   | `/connect_shoe_collections`     | `connect_shoe_collections#create`
-PATCH  | `/connect_shoe_collections/:id` | `connect_shoe_collections#update`
 
 All data is returned from API actions formatted as JSON. Connect Shoe Collection Controller is not ready for implementation. It needs to be formatted to inherit from OpenReadController to authenticate user.
 
@@ -699,99 +695,6 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=$TOKEN"
 
-```
-
-Response:
-
-```markdown
-HTTP/1.1 204 No Content
-```
-
-# Connect Shoe Collections
-This part is unfinished and will be modified in the future
-
-
-## POST /connect_shoe_collections
-
-Request:
-
-```sh
-SHOEID='32'
-COLLECTIONID='31'
-
-API="${API_ORIGIN:-http://localhost:4741}"
-URL_PATH="/connect_shoe_collections"
-curl "${API}${URL_PATH}" \
-  --include \
-  --request POST \
-  --header "Content-Type: application/json" \
-  --data '{
-    "connect_shoe_collection": {
-      "shoe_id": "'"${SHOEID}"'",
-      "collection_id": "'"${COLLECTIONID}"'"
-    }
-  }'
-```
-
-
-Response:
-
-```markdown
-HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8
-
-{
-  "connect_shoe_collection":
-    {
-      "id":1,
-      "shoe":
-        {
-          "id":32,
-          "name":"Jordan 30",
-          "brand":"Jordan",
-          "caption":"my favorite shoe",
-          "user": {
-            "id":19,
-            "email":"a",
-            "token":"5238f36ac39b154ae57680f7a0e12865",
-            "password_digest":"$2a$10$huAG0.NWORbUjWlbfaQ7outo3a4PYObs7wclVj647uyzCkObrjjqy",
-            "created_at":"2017-07-24T13:29:11.369Z",
-            "updated_at":"2017-07-25T20:28:27.534Z"
-            }
-        },
-      "collection":
-        {
-        "id":31,
-        "name":"ewqrqwerwq",
-        "description":"kk",
-        "shoes":[
-          {
-            "id":32,
-            "name":"Jordan 30",
-            "brand":"Jordan",
-            "caption":"my favorite shoe",
-            "user_id":19,
-            "created_at":"2017-07-24T14:21:18.422Z",
-            "updated_at":"2017-07-24T14:21:18.422Z"
-          }
-          ]
-        }
-    }
-}
-```
-
-
-## DELETE /connect_shoe_collections/:id
-
-Request:
-
-```sh
-ID='8'
-API="${API_ORIGIN:-http://localhost:4741}"
-URL_PATH="/connect_shoe_collections"
-curl "${API}${URL_PATH}/${ID}" \
-  --include \
-  --request DELETE \
 ```
 
 Response:
