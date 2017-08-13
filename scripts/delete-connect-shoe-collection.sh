@@ -1,6 +1,6 @@
 #!/bin/bash
-ID='3'
-TOKEN='BAhJIiU5NDJlNmU1Tk0YjU0MjI4OTUxYTU2OGQ1MjliNTAxZgY6BkVG--5ecdd9e2d14522e46d8721c2adcc3469de7d6e63'
+ID='6'
+TOKEN='BAhJIiU1YzBlZmRiNTY4MTI1ODA0NTcwZTlhMjEyNmUwNjBlZQY6BkVG--dc039e2f6b6e8f57c90be2b2f28cbd71465deb96'
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/connects"
 curl "${API}${URL_PATH}/${ID}" \
