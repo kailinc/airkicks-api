@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_many :examples
   has_many :shoes
   has_many :collections
+  has_many :connects
 end

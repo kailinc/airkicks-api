@@ -2,8 +2,7 @@
 Rails.application.routes.draw do
 
   # CONNECT SHOE COLLECTIONS
-  resources :connect_shoe_collections, only: [:index, :show, :create, :destroy]
-
+  resources :connects, only: [:index, :show, :create, :destroy]
 
   # COLLECTION routes
   resources :collections, only: [:index, :show, :create, :destroy, :update]
