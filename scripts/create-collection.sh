@@ -1,6 +1,6 @@
-TOKEN='BAhJIiU1MjM4ZjM2YWMzOWIxNTRhZTU3NjgwZjdhMGUxMjg2NQY6BkVG--377069f0d82c2c843cea8fc7711ffffd2ae0e1df'
-DESCRIPTION='I love This'
-NAME='Jordan King'
+TOKEN='BAhJIiVjZDM1MjUxYzkxNWU5MzIwYTNiODI4NDljYjZlOTEwZAY6BkVG--c8cdaa8408df82dcec1fac96a5f485413203aedb'
+DESCRIPTION='Kai'
+NAME='Jordans Only'
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/collections"
